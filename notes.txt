@@ -1,0 +1,29 @@
+
+// app.get('/',(req,res)=> {
+// //JSON 
+// //res.json({key: 007});
+// //HTML
+// //res.send('<h4>Gday</h4>');
+// //headers(localhost:3000)
+// //res.send(req.get('Host'));
+// //rawHeaders property
+// res.send(req.rawHeaders);
+// });
+
+/**CONDITIONAL SENDING */
+// app.post('/login',(req,res)=> {
+// if(!req.header('x-auth-token')){
+// return res.status(400).send('No token found');
+// }
+// if(req.header('x-auth-token')!== '123456'){
+//     return res.status(401).send('Authorzation failed')
+// }
+// res.send('Logged in succesffully');
+// });
+
+ //  const obj = {
+    //      name: req.body.name,
+    //      username: req.body.username
+    //  }
+    //  res.json(obj);
+    //  res.end();
