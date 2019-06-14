@@ -7,27 +7,21 @@
         <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
             crossorigin="anonymous">
         <link rel="stylesheet" type="text/css" href="style.css" />
+        <script src="main.js"></script>
         <title>Document</title>
     </head>
 
     <body>
         <form method="POST" action="/contacts">
             <div class="form-row align-items-block">
-                <div class="col-sm-3 my-1">
-                    <label class="sr-only" for="inlineFormInputName">Name</label>
-                    <input type="text" class="form-control" id="inlineFormInputName" name="name" placeholder="Name">
-                </div>
-                <div class="col-sm-3 my-1">
-                    <label class="sr-only" for="inlineFormInputGroupUsername">Username</label>
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                            <div class="input-group-text">@</div>
-                        </div>
-                        <input type="text" class="form-control" id="inlineFormInputGroupUsername" name="username" placeholder="Username">
-                    </div>
-                </div>
-                <div class="col-auto my-1">
-                    <button type="submit" class="btn btn-warning">Submit</button>
+                <input type="text" class="form-control" id="inlineFormInputName" name="name" placeholder="Name">
+                <br/>
+                <br/>
+                <input type="text" class="form-control" id="inlineFormInputGroupUsername" name="username" placeholder="username">
+
+
+                <div class="col-auto my-3">
+                    <button id="button" type="submit" class="btn btn-warning" onclick="buttonToggle()">Submit</button>
                 </div>
         </form>
 
