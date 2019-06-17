@@ -27,3 +27,31 @@
     //  }
     //  res.json(obj);
     //  res.end();
+
+    app.post('/login', (req, res) => {
+    const user = {
+        id: 1,
+        name: 'Tommy',
+        email: 'MAGES06@gmail.com'
+    }
+    jwt.sign({
+        user
+    }, 'secretKey', (err, token) => {
+        res.json({
+            token
+        });
+    })
+});
+
+//VerifyToken
+function verifyToken(req, res, next) {
+    //getauth header value
+    const bearerHeader = req.headers['authorization'];
+    //check if undefined
+    if (typeof bearerHeader !== undefined) {
+
+    } else {
+        //forbiddeś
+        res.status(403);
+    }
+}
