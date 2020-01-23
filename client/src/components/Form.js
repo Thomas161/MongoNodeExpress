@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 //import axios from "axios"
 import { Field } from "./Field";
+import "../App.css";
 
 const emailRegex = RegExp(
   /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
@@ -105,11 +106,14 @@ class Form extends Component {
   render() {
     return (
       <>
-        <div>
-          <form onSubmit={this.onFormSubmit} noValidate>
-            <Field value={this.state} onChange={this.handleOtherInput} />
-          </form>
-          <hr />
+        <div className="wrapper">
+          <div className="form-wrapper">
+            <h1>React Form</h1>
+            <form onSubmit={this.onFormSubmit} noValidate>
+              <Field value={this.state} onChange={this.handleOtherInput} />
+            </form>
+            <hr />
+          </div>
         </div>
       </>
     );

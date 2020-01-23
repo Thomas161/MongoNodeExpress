@@ -1,8 +1,9 @@
-# MongoNodeExpress
+# MERN APP
 
 [![npm version](https://badge.fury.io/js/npm.svg)](https://badge.fury.io/js/npm)
 
-# A CRUD app made using Node,Express and MongoDB
+### Form Validation
 
+### Server side rendering (express)
 
-
+### MongoDB

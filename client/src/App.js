@@ -1,15 +1,16 @@
 import React from "react";
 import Form from "./components/Form";
-import "./App.css";
+import { Error } from "./components/Error";
+import { Switch, Route, BrowserRouter as Router } from "react-router-dom";
 class App extends React.Component {
   render() {
     return (
-      <div className="wrapper">
-        <div className="form-wrapper">
-          <h1>React Form</h1>
-          <Form />
-        </div>
-      </div>
+      <Router>
+        <Switch>
+          <Route path="/" component={Form} exact />
+          <Route component={Error} />
+        </Switch>
+      </Router>
     );
   }
 }
