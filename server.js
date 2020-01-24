@@ -1,8 +1,15 @@
 var express = require("express");
 var path = require("path");
-// var cors = require("cors");
+var cors = require("cors");
 var app = express();
 var port = 5000;
+
+app.use(
+  cors({
+    origin: "http://localhost:3000",
+    credentials: true
+  })
+);
 
 app.use(express.json());
 app.use(
@@ -13,21 +20,29 @@ app.use(
 
 app.set("json spaces", 4);
 
-app.use(express.static("client/public"));
+//app.use(express.static("client/public"));
 
+let stuff = [];
 app.get("/backend", (req, res) => {
-  let customers = [
-    { id: 1, firstname: "Henry" },
-    { id: 2, firstname: "Julia" }
-  ];
-  res.send({ express: customers });
+  console.log("Backend");
+
+  res.writeHead(200, { "Content-Type": "application/json" });
+  console.log("Stuff => ", JSON.stringify(stuff));
+  res.end(JSON.stringify(stuff));
 });
 app.post("/contacts", (req, res) => {
-  // let name = req.body.name;
-  // let age = req.body.age;
-  // let occ = req.body.occupation;
-  // let email = req.body.email;
-  res.send({ express: req.body.name });
+  const rego = {
+    fNAME: req.body.firstName,
+    lNAME: req.body.lastName,
+    eMAIL: req.body.email
+  };
+
+  stuff.push(rego);
+  console.log(stuff);
+
+  //const {fName,lName,email}=  rego;
+  // const fName = req.body.firstName;
+  res.send({ express: stuff });
   res.end();
 });
 

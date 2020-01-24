@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-//import axios from "axios"
+import API from "../api/api";
 import { Field } from "./Field";
 import "../App.css";
 
@@ -80,6 +80,19 @@ class Form extends Component {
         "font-family:tahoma; font-size:12px; color:#0EE5EC;",
         email
       );
+      const combineDetails = {
+        firstName,
+        lastName,
+        email
+      };
+      API.post("/contacts", combineDetails)
+        .then(() =>
+          console.log(
+            `Sent Data ${combineDetails.firstName} ${combineDetails.lastName} ${combineDetails.email}`
+          )
+        )
+        .catch(err => console.log(`Error, ${err}`));
+
       localStorage.setItem("firstName", firstName);
       localStorage.setItem("lastName", lastName);
       localStorage.setItem("email", email);
