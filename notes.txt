@@ -56,3 +56,24 @@ function verifyToken(req, res, next) {
     }
 }
 
+/ validateForm = () => {
+//   const { nameValid, emailValid, occupationValid, ageValid } = this.state;
+//   this.setState({
+//     formValid: nameValid && emailValid && occupationValid && ageValid
+//   });
+// };
+
+// const p = [...this.state.people];
+// const pi = this.state.fields;
+// const fieldErrors = this.validateFields(pi);
+// this.setState({ fieldErrors });
+// if (Object.keys(fieldErrors).length) return;
+// this.setState({
+//   p: p.concat(pi),
+//   fields: {
+//     name: ""
+//   }
+// });
+//  console.log(pi);
+
+

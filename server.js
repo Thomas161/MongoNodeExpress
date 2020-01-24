@@ -20,15 +20,22 @@ app.use(
 
 app.set("json spaces", 4);
 
-//app.use(express.static("client/public"));
+let newPeople = [];
 
-let stuff = [];
+app.get("/", (err, req, res) => {
+  res.send("aloha");
+  // } else if (res.status(404).send("Error", err)) {
+  // } else if (res.status(403).send("forbidden")) {
+  // } else {
+  //   return;
+  // }
+});
 app.get("/backend", (req, res) => {
   console.log("Backend");
 
   res.writeHead(200, { "Content-Type": "application/json" });
-  console.log("Stuff => ", JSON.stringify(stuff));
-  res.end(JSON.stringify(stuff));
+  console.log("New People Registered => ", JSON.stringify(newPeople));
+  res.end(JSON.stringify(newPeople));
 });
 app.post("/contacts", (req, res) => {
   const rego = {
@@ -37,12 +44,9 @@ app.post("/contacts", (req, res) => {
     eMAIL: req.body.email
   };
 
-  stuff.push(rego);
-  console.log(stuff);
-
-  //const {fName,lName,email}=  rego;
-  // const fName = req.body.firstName;
-  res.send({ express: stuff });
+  newPeople.push(rego);
+  console.log(newPeople);
+  res.send({ express: newPeople });
   res.end();
 });
 
