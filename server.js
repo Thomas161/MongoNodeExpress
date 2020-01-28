@@ -2,6 +2,7 @@ var express = require("express");
 var path = require("path");
 var cors = require("cors");
 var app = express();
+var mongoose = require("mongoose");
 var port = 5000;
 
 app.use(
@@ -20,24 +21,29 @@ app.use(
 
 app.set("json spaces", 4);
 
+mongoose.connect("mongodb://127.0.0.1/my_new-DB", {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+});
+
+var personSchema = mongoose.Schema({
+  firstName: String,
+  lastName: String,
+  email: String
+});
+var Person = mongoose.model("Person", personSchema);
 let newPeople = [];
 
-app.get("/", (err, req, res) => {
-  res.send("aloha");
-  // } else if (res.status(404).send("Error", err)) {
-  // } else if (res.status(403).send("forbidden")) {
-  // } else {
-  //   return;
-  // }
-});
-app.get("/backend", (req, res) => {
-  console.log("Backend");
-
-  res.writeHead(200, { "Content-Type": "application/json" });
-  console.log("New People Registered => ", JSON.stringify(newPeople));
-  res.end(JSON.stringify(newPeople));
+app.get("/", (req, res) => {
+  res.send({ express: "ALoha" });
+  //console.log("What is a response object ", res);
+  if (res.status(200)) return res.send({ express: "Aloha" });
+  else if (res.status(403)) return res.send({ express: "Forbidden" });
+  else if (res.status(500)) return res.send({ express: "Server Error" });
+  else return res.status(404).send({ express: "Not Found" });
 });
 app.post("/contacts", (req, res) => {
+  //Saving to Node server
   const rego = {
     fNAME: req.body.firstName,
     lNAME: req.body.lastName,
@@ -47,42 +53,35 @@ app.post("/contacts", (req, res) => {
   newPeople.push(rego);
   console.log(newPeople);
   res.send({ express: newPeople });
+
+  // //Saving to Mongodb
+  // var personInfo = req.body;
+
+  // if (!personInfo.firstName || !personInfo.lastName || !personInfo.email) {
+  //   res.status(404);
+  // } else {
+  //   var newPerson = new Person({
+  //     f: personInfo.firstName,
+  //     l: personInfo.lastName,
+  //     e: personInfo.email
+  //   });
+
+  //   newPerson.save((err, Person) => {
+  //     if (err) res.status(401).send("Error", err.message);
+  //     else res.status(201).send("Successfully added new peron");
+  //   });
+
   res.end();
 });
 
+app.get("/backend", (req, res) => {
+  console.log("Backend");
+  res.writeHead(200, { "Content-Type": "application/json" });
+  console.log("New People Registered => ", JSON.stringify(newPeople));
+  res.end(JSON.stringify(newPeople));
+});
+
 app.listen(port, () => console.log("Listening on 5000"));
-// var mongoose = require("mongoose");
-
-// mongoose.connect("mongodb://127.0.0.1/my_new-DB", {
-//   useNewUrlParser: true,
-//   useUnifiedTopology: true
-// });
-
-// var personSchema = mongoose.Schema({
-//   name: String,
-//   username: String
-// });
-// var Person = mongoose.model("Person", personSchema);
-
-// //Save Person
-
-// app.post("/contacts", (req, res) => {
-//   var personInfo = req.body;
-
-//   if (!personInfo.name || !personInfo.username) {
-//     res.status(404);
-//   } else {
-//     var newPerson = new Person({
-//       name: personInfo.name,
-//       username: personInfo.username
-//     });
-
-//     newPerson.save((err, Person) => {
-//       if (err) res.status(401).send("Error", err.message);
-//       else res.status(201).send("Successfully added new peron");
-//     });
-//   }
-// });
 
 // //Get Person List
 
