@@ -117,13 +117,19 @@ class Form extends Component {
   }
 
   render() {
+    const { firstName, lastName, email } = this.state;
+    const isEnabled = firstName.length > 3 && lastName.length > 3 && email > 0;
     return (
       <>
         <div className="wrapper">
           <div className="form-wrapper">
             <h1>React Form</h1>
             <form onSubmit={this.onFormSubmit} noValidate>
-              <Field value={this.state} onChange={this.handleOtherInput} />
+              <Field
+                value={this.state}
+                isEnabled={isEnabled}
+                onChange={this.handleOtherInput}
+              />
             </form>
             <hr />
           </div>

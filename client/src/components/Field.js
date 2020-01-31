@@ -1,6 +1,6 @@
 import React from "react";
 
-export const Field = ({ value, onChange }) => {
+export const Field = ({ value, onChange, isEnabled }) => {
   return (
     <>
       <div>
@@ -52,7 +52,8 @@ export const Field = ({ value, onChange }) => {
           )}
         </div>
         <hr />
-        <input type="submit" />
+        <input disabled={!isEnabled} type="submit" />
+        {/* <button disabled={!isEnabled}>Submit</button> */}
       </div>
     </>
   );
