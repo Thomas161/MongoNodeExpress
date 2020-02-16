@@ -76,4 +76,73 @@ function verifyToken(req, res, next) {
 // });
 //  console.log(pi);
 
+// const h1Styles = {
+//   fontStyle: "tahoma"
+// };
+
+// import { ThemeProvider } from "@material-ui/core/styles";
+// import AppBar from "@material-ui/core/AppBar";
+// import TextField from "@material-ui/core/TextField";
+// import RadioButton from "@material-ui/core/RadioButton";
+
+/* <TextField
+            hinttext="Enter your email"
+            floatingLabelText="email"
+            onChange={onChange("email")}
+            defaultValue={value.email}
+          />
+          <br />
+          <RadioButton
+            label="Continue"
+            primary={true}
+            style={styles.button}
+            onClick={this.continue}
+          /> */
+
+//   <div>
+//     <div className="firstName">
+//       <label htmlFor="firstName">First Name</label>
+//       <input
+//         className={value.fieldErrors.firstName.length > 0 ? "error" : null}
+//         type="text"
+//         name="firstName"
+//         placeholder="First Name"
+//         onChange={onChange}
+//         noValidate
+//       />
+
+//       {value.fieldErrors.firstName.length > 0 && (
+//         <span className="errorMessage">{value.fieldErrors.firstName}</span>
+//       )}
+//     </div>
+//     <hr />
+//     <div className="lastName">
+//       <label htmlFor="lastName">Last Name</label>
+//
+//     </div>
+//     <hr />
+//     <div className="email">
+//       <label htmlFor="email">Email</label>
+//
+//     </div>
+//     <hr />
+//     <input type="submit" />
+//   </div>
+// </>
+
+    // return (
+    //   <>
+    //     <div className="wrapper">
+    //       <div className="form-wrapper">
+    //         <h1>React Form</h1>
+    //         <form onSubmit={this.onFormSubmit} noValidate>
+    //           <Field />
+    //         </form>
+    //         <hr />
+    //       </div>
+    //     </div>
+    //   </>
+    // );
+
+
 

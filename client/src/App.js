@@ -8,6 +8,7 @@ class App extends React.Component {
       <Router>
         <Switch>
           <Route path="/" component={Form} exact />
+          {/* Add additional front end component routes */}
           <Route component={Error} />
         </Switch>
       </Router>

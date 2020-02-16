@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import API from "../api/api";
-import { Field } from "./Field";
+import UserForm from "./UserForm";
+import PersonalForm from "./PersonalForm";
+import InterestsForm from "./InterestsForm";
+import Confirmation from "./Confirmation";
 import "../App.css";
 
 const emailRegex = RegExp(
@@ -22,21 +25,39 @@ const validateFields = (fieldErrors, ...rest) => {
   return valid;
 };
 class Form extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
+  state = {
+    step: 1,
+    firstName: "",
+    lastName: "",
+    email: "",
+    sex: "",
+    age: "",
+    hobbies: "",
+    food: "",
+    fieldErrors: {
       firstName: "",
       lastName: "",
       email: "",
-      fieldErrors: {
-        firstName: "",
-        lastName: "",
-        email: ""
-      }
-    };
-  }
+      sex: "",
+      age: "",
+      hobbies: "",
+      food: ""
+    }
+  };
 
-  handleOtherInput = e => {
+  // nextStep(){}
+  nextStep = () => {
+    const { step } = this.state;
+    this.setState({ step: step + 1 });
+  };
+
+  //prevStep(){}
+  prevStep = () => {
+    const { step } = this.state;
+    this.setState({ step: step - 1 });
+  };
+
+  handleOtherInput = input => e => {
     e.preventDefault();
     const { name, value } = e.target;
     let formErrors = this.state.fieldErrors;
@@ -50,10 +71,25 @@ class Form extends Component {
       case "email":
         formErrors.email = emailRegex.test(value) ? "" : "invalid email";
         break;
+      case "sex":
+        formErrors.email = emailRegex.test(value) ? "" : "invalid email";
+        break;
+      case "age":
+        formErrors.email = emailRegex.test(value) ? "" : "invalid email";
+        break;
+      case "food":
+        formErrors.email = emailRegex.test(value) ? "" : "invalid email";
+        break;
+      case "hobbies":
+        formErrors.hobbies = value.length < 3 ? "Min 3 chars" : "";
+        break;
+
+      // other case to be matched
+      //i.e age/sex/hobbies/fave foods etc
       default:
         break;
     }
-    this.setState({ formErrors, [name]: value });
+    this.setState({ formErrors, [input]: e.target.value });
     // () => console.log(this.state)
   };
 
@@ -80,10 +116,12 @@ class Form extends Component {
         "font-family:tahoma; font-size:12px; color:#0EE5EC;",
         email
       );
+      //add console.log() for =>sex,age,hobbies,fave foods etc
       const combineDetails = {
         firstName,
         lastName,
         email
+        //add sex,age,hobbies,fave foods etc
       };
       API.post("/contacts", combineDetails)
         .then(() =>
@@ -96,6 +134,7 @@ class Form extends Component {
       localStorage.setItem("firstName", firstName);
       localStorage.setItem("lastName", lastName);
       localStorage.setItem("email", email);
+      //add sex,age,hobbies,fave foods etc
 
       e.target.reset();
     } else {
@@ -110,6 +149,10 @@ class Form extends Component {
     /**OPTIONAL */
     //  const storage1 = localStorage.getItem("lastName") === "true";
     //  const storage2 = localStorage.getItem("email") === "true";
+    //  const storage3 = localStorage.getItem("age") === "true";
+    //  const storage4 = localStorage.getItem("sex") === "true";
+    //  const storage5 = localStorage.getItem("faveFood") === "true";
+    //  const storage6 = localStorage.getItem("hobbies") === "true";
   }
 
   componentDidUpdate() {
@@ -117,25 +160,53 @@ class Form extends Component {
   }
 
   render() {
-    const { firstName, lastName, email } = this.state;
-    const isEnabled = firstName.length > 3 && lastName.length > 3 && email > 0;
-    return (
-      <>
-        <div className="wrapper">
-          <div className="form-wrapper">
-            <h1>React Form</h1>
-            <form onSubmit={this.onFormSubmit} noValidate>
-              <Field
-                value={this.state}
-                isEnabled={isEnabled}
-                onChange={this.handleOtherInput}
-              />
-            </form>
-            <hr />
-          </div>
-        </div>
-      </>
-    );
+    const { step } = this.state;
+    // const {
+    //   firstName,
+    //   lastName,
+    //   email,
+    //   age,
+    //   faveFood,
+    //   sex,
+    //   hobbies
+    // } = this.state;
+    //const value = { firstName, lastName, email, age, faveFood, sex, hobbies };
+    switch (step) {
+      case 1:
+        return (
+          <UserForm
+            value={this.state}
+            onChange={this.handleOtherInput}
+            nextStep={this.nextStep}
+          />
+        );
+      case 2:
+        return (
+          <PersonalForm
+            value={this.state}
+            onChange={this.handleOtherInput}
+            nextStep={this.nextStep}
+            prevStep={this.prevStep}
+          />
+        );
+      case 3:
+        return (
+          <InterestsForm
+            value={this.state}
+            onChange={this.handleOtherInput}
+            nextStep={this.nextStep}
+            prevStep={this.prevStep}
+          />
+        );
+      case 4:
+        return (
+          <Confirmation prevStep={this.prevStep} onSubmit={this.onFormSubmit} />
+        );
+      case 5:
+        return <Success />;
+      default:
+        return;
+    }
   }
 }
 export default Form;
