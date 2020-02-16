@@ -6,4 +6,4 @@
 
 ### Server side rendering (express)
 
-### MongoDB
+### Bootstrapped
