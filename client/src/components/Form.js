@@ -189,6 +189,7 @@ class Form extends Component {
         superhero
       };
       this.setState({ defaultState });
+      this.props.history.push("/");
     } else {
       console.error("Error");
     }

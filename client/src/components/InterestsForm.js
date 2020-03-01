@@ -20,31 +20,33 @@ class InterestsForm extends React.Component {
             {/* style={h1Styles.fontStyle} */}
           </span>
         </nav>
-        <label>Fave Food</label>
-        <input
-          type="text"
-          value={value.food}
-          className={value.fieldErrors.food.length > 0 ? "error" : null}
-          name="food"
-          placeholder="foods"
-          onChange={onChange("food")}
-        />
-        {value.fieldErrors.food.length > 0 && (
-          <span className="errorMessage">{value.fieldErrors.food}</span>
-        )}
-        <br />
-        <label>Hobbies</label>
-        <input
-          type="text"
-          value={value.hobbies}
-          className={value.fieldErrors.hobbies.length > 0 ? "error" : null}
-          name="hobbies"
-          placeholder="hobbies"
-          onChange={onChange("hobbies")}
-        />
-        {value.fieldErrors.hobbies.length > 0 && (
-          <span className="errorMessage">{value.fieldErrors.hobbies}</span>
-        )}
+        <div className="form-group">
+          <label htmlFor="formGroupExampleInput">Fave Food</label>
+          <input
+            type="text"
+            value={value.food}
+            className={value.fieldErrors.food.length > 0 ? "error" : null}
+            name="food"
+            placeholder="foods"
+            onChange={onChange("food")}
+          />
+          {value.fieldErrors.food.length > 0 && (
+            <span className="errorMessage">{value.fieldErrors.food}</span>
+          )}
+          <br />
+          <label htmlFor="formGroupExampleInput">Hobbies</label>
+          <input
+            type="text"
+            value={value.hobbies}
+            className={value.fieldErrors.hobbies.length > 0 ? "error" : null}
+            name="hobbies"
+            placeholder="hobbies"
+            onChange={onChange("hobbies")}
+          />
+          {value.fieldErrors.hobbies.length > 0 && (
+            <span className="errorMessage">{value.fieldErrors.hobbies}</span>
+          )}
+        </div>
         <br />
         <button className="btn btn-dark" onClick={this.back}>
           Back

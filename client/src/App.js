@@ -16,20 +16,3 @@ class App extends React.Component {
   }
 }
 export default App;
-
-// componentDidMount() {
-//   this.callBackendAPI()
-//     .then(res =>
-//       this.setState({ data: res.express, customers: customers.firstname })
-//     )
-//     .catch(err => console.log(err));
-// }
-// callBackendAPI = async () => {
-//   const response = await fetch("/backend");
-//   const body = await response.json();
-
-//   if (response.status !== 200) {
-//     throw Error(body.message);
-//   }
-//   return body;
-// };
