@@ -1,4 +1,5 @@
 import React from "react";
+import "../css/interests.css";
 
 class InterestsForm extends React.Component {
   continue = e => {
@@ -16,11 +17,10 @@ class InterestsForm extends React.Component {
       <div>
         <nav className="navbar navbar-lg bg-primary">
           <span className="navbar-brand mb-3 h1">
-            <h1>Interests</h1>
-            {/* style={h1Styles.fontStyle} */}
+            <h1 className="int">Interests</h1>
           </span>
         </nav>
-        <div className="form-group">
+        <div className="form-list">
           <label htmlFor="formGroupExampleInput">Fave Food</label>
           <input
             type="text"
@@ -48,12 +48,15 @@ class InterestsForm extends React.Component {
           )}
         </div>
         <br />
-        <button className="btn btn-dark" onClick={this.back}>
-          Back
-        </button>
-        <button className="btn btn-success" onClick={this.continue}>
-          Continue
-        </button>
+        <div className="hole">
+          <button className="btn btn-dark btn-lg" onClick={this.back}>
+            Back
+          </button>
+          <div className="gap"></div>
+          <button className="btn btn-success btn-lg" onClick={this.continue}>
+            Continue
+          </button>
+        </div>
       </div>
     );
   }

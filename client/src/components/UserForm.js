@@ -12,7 +12,6 @@ class UserForm extends React.Component {
         <nav className="navbar navbar-lg bg-primary">
           <span className="navbar-brand mb-3 h1">
             <h1>User Form</h1>
-            {/* style={h1Styles.fontStyle} */}
           </span>
         </nav>
         <div className="form-group">
@@ -59,15 +58,14 @@ class UserForm extends React.Component {
           )}
           <br />
         </div>
-        <div className="chrome">
-          <button
-            className="btn btn-warning btn-lg"
-            style={styles.button}
-            onClick={this.continue}
-          >
-            Continue
-          </button>
-        </div>
+
+        <button
+          className="btn btn-warning btn-lg"
+          style={styles.button}
+          onClick={this.continue}
+        >
+          Continue
+        </button>
       </div>
     );
   }

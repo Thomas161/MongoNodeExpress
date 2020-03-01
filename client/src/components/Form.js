@@ -5,7 +5,7 @@ import PersonalForm from "./PersonalForm";
 import InterestsForm from "./InterestsForm";
 import Confirmation from "./Confirmation";
 import Success from "./Success";
-import "../App.css";
+import "../css/App.css";
 
 const emailRegex = RegExp(
   /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
@@ -144,7 +144,7 @@ class Form extends Component {
         "font-family:tahoma; font-size:12px; color:#0EE5EC;",
         hobbies
       );
-      //add console.log() for =>sex,age,hobbies,fave foods etc
+
       const combineDetails = {
         firstName,
         lastName,
@@ -247,6 +247,7 @@ class Form extends Component {
             value={this.state}
             prevStep={this.prevStep}
             onSubmit={this.onFormSubmit}
+            nextStep={this.nextStep}
           />
         );
       case 5:

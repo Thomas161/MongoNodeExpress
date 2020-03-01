@@ -1,0 +1,53 @@
+.fully {
+  background-color: rgba(96, 93, 93, 0.726);
+  width: 300px;
+  margin-left: 20px;
+  border: rgb(233, 62, 190) dotted 3px;
+}
+ul {
+  list-style-type: none;
+
+  text-align: left;
+  width: 20em;
+}
+
+label {
+  position: relative;
+  left: 20px;
+  color: white;
+  font-size: 1.5em;
+  text-shadow: #000 2px 2px 2px;
+}
+span {
+  position: relative;
+  left: 20px;
+  color: red;
+  font-size: 1em;
+  font-weight: bold;
+}
+
+.halo {
+  text-align: center;
+  width: 100%;
+  color: white;
+  font-weight: bolder;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+}
+.halo:hover {
+  color: rgb(236, 236, 18);
+}
+
+.end {
+  left: 200px;
+  margin-left: 20px;
+}
+.fissure {
+  width: 10px;
+  height: auto;
+  display: inline-block;
+}
+.mar {
+  width: 10px;
+  height: auto;
+  display: inline-block;
+}
