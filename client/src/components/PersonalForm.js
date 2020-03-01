@@ -21,21 +21,35 @@ class PersonalForm extends React.Component {
           </span>
         </nav>
         <span>
-          <label>Sex</label>
-          <input type="checkbox" />
+          <label>Fave Superhero</label>
+          <input
+            className={value.fieldErrors.superhero.length > 0 ? "error" : null}
+            type="input"
+            name="superhero"
+            value={value.superhero}
+            onChange={onChange("superhero")}
+            noValidate
+          />
+          {value.fieldErrors.superhero.length > 0 && (
+            <span className="errorMessage">{value.fieldErrors.superhero}</span>
+          )}
 
-          <input type="checkbox" />
+          <br />
+          <label>Age</label>
+          <input
+            className={value.fieldErrors.age.length > 0 ? "error" : null}
+            type="input"
+            name="age"
+            value={value.age}
+            onChange={onChange("age")}
+            noValidate
+          />
+          {value.fieldErrors.age.length > 0 && (
+            <span className="errorMessage">{value.fieldErrors.age}</span>
+          )}
         </span>
+
         <br />
-        <label>Age</label>
-        <select>
-          <option value="10-20">10-20</option>
-          <option value="20-30">20-30</option>
-          <option value="30-40">30-40</option>
-          <option value="40-50">40-50</option>
-          <option value="40-50">50-60</option>
-          <option value="40-50">60-70</option>
-        </select>
         <br />
         <button className="btn btn-danger" onClick={this.back}>
           Back
@@ -48,11 +62,11 @@ class PersonalForm extends React.Component {
   }
 }
 
-const styles = {
-  button: {
-    margin: 15
-  }
-};
+// const styles = {
+//   button: {
+//     margin: 15
+//   }
+// };
 export default PersonalForm;
 
 // import { MuiThemeProvider } from "@material-ui/core/styles/MuiThemeProvider";

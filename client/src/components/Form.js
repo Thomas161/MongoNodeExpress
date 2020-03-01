@@ -4,6 +4,7 @@ import UserForm from "./UserForm";
 import PersonalForm from "./PersonalForm";
 import InterestsForm from "./InterestsForm";
 import Confirmation from "./Confirmation";
+import Success from "./Success";
 import "../App.css";
 
 const emailRegex = RegExp(
@@ -30,7 +31,7 @@ class Form extends Component {
     firstName: "",
     lastName: "",
     email: "",
-    sex: "",
+    superhero: "",
     age: "",
     hobbies: "",
     food: "",
@@ -38,7 +39,7 @@ class Form extends Component {
       firstName: "",
       lastName: "",
       email: "",
-      sex: "",
+      superhero: "",
       age: "",
       hobbies: "",
       food: ""
@@ -71,31 +72,38 @@ class Form extends Component {
       case "email":
         formErrors.email = emailRegex.test(value) ? "" : "invalid email";
         break;
-      case "sex":
-        formErrors.email = emailRegex.test(value) ? "" : "invalid email";
+      case "superhero":
+        formErrors.superhero = value.length < 4 ? "Min 3 chars" : "";
         break;
       case "age":
-        formErrors.email = emailRegex.test(value) ? "" : "invalid email";
+        formErrors.age = Number(value) ? "" : "must be number";
         break;
       case "food":
-        formErrors.email = emailRegex.test(value) ? "" : "invalid email";
+        formErrors.food = value.length < 10 ? "Min 10 chars" : "";
         break;
       case "hobbies":
-        formErrors.hobbies = value.length < 3 ? "Min 3 chars" : "";
+        formErrors.hobbies = value.length < 10 ? "Min 10 chars" : "";
         break;
-
-      // other case to be matched
-      //i.e age/sex/hobbies/fave foods etc
       default:
         break;
     }
-    this.setState({ formErrors, [input]: e.target.value });
-    // () => console.log(this.state)
+    this.setState({
+      formErrors,
+      [input]: e.target.value
+    });
   };
 
   onFormSubmit = e => {
     e.preventDefault();
-    const { firstName, lastName, email } = this.state;
+    const {
+      firstName,
+      lastName,
+      email,
+      superhero,
+      age,
+      food,
+      hobbies
+    } = this.state;
     if (validateFields(this.state.fieldErrors)) {
       console.log(
         "%cSubmitted",
@@ -116,17 +124,49 @@ class Form extends Component {
         "font-family:tahoma; font-size:12px; color:#0EE5EC;",
         email
       );
+      console.log(
+        "%cSuperhero:",
+        "font-family:tahoma; font-size:12px; color:#0EE5EC;",
+        superhero
+      );
+      console.log(
+        "%cAge:",
+        "font-family:tahoma; font-size:12px; color:#0EE5EC;",
+        age
+      );
+      console.log(
+        "%cFoods:",
+        "font-family:tahoma; font-size:12px; color:#0EE5EC;",
+        food
+      );
+      console.log(
+        "%cHobbies:",
+        "font-family:tahoma; font-size:12px; color:#0EE5EC;",
+        hobbies
+      );
       //add console.log() for =>sex,age,hobbies,fave foods etc
       const combineDetails = {
         firstName,
         lastName,
-        email
-        //add sex,age,hobbies,fave foods etc
+        email,
+        superhero,
+        age,
+        food,
+        hobbies
       };
+
       API.post("/contacts", combineDetails)
         .then(() =>
           console.log(
-            `Sent Data ${combineDetails.firstName} ${combineDetails.lastName} ${combineDetails.email}`
+            `Sent Data 
+            ${combineDetails.firstName}
+             ${combineDetails.lastName}
+              ${combineDetails.email}
+              ${combineDetails.superhero}
+              ${combineDetails.age}
+              ${combineDetails.food}
+              ${combineDetails.hobbies}
+              `
           )
         )
         .catch(err => console.log(`Error, ${err}`));
@@ -134,9 +174,21 @@ class Form extends Component {
       localStorage.setItem("firstName", firstName);
       localStorage.setItem("lastName", lastName);
       localStorage.setItem("email", email);
+      localStorage.setItem("superhero", superhero);
+      localStorage.setItem("superhero", age);
+      localStorage.setItem("superhero", food);
+      localStorage.setItem("superhero", hobbies);
       //add sex,age,hobbies,fave foods etc
-
-      e.target.reset();
+      let defaultState = {
+        firstName,
+        lastName,
+        email,
+        age,
+        hobbies,
+        food,
+        superhero
+      };
+      this.setState({ defaultState });
     } else {
       console.error("Error");
     }
@@ -150,8 +202,8 @@ class Form extends Component {
     //  const storage1 = localStorage.getItem("lastName") === "true";
     //  const storage2 = localStorage.getItem("email") === "true";
     //  const storage3 = localStorage.getItem("age") === "true";
-    //  const storage4 = localStorage.getItem("sex") === "true";
-    //  const storage5 = localStorage.getItem("faveFood") === "true";
+    //  const storage4 = localStorage.getItem("superhero") === "true";
+    //  const storage5 = localStorage.getItem("food") === "true";
     //  const storage6 = localStorage.getItem("hobbies") === "true";
   }
 
@@ -161,16 +213,6 @@ class Form extends Component {
 
   render() {
     const { step } = this.state;
-    // const {
-    //   firstName,
-    //   lastName,
-    //   email,
-    //   age,
-    //   faveFood,
-    //   sex,
-    //   hobbies
-    // } = this.state;
-    //const value = { firstName, lastName, email, age, faveFood, sex, hobbies };
     switch (step) {
       case 1:
         return (
@@ -200,7 +242,11 @@ class Form extends Component {
         );
       case 4:
         return (
-          <Confirmation prevStep={this.prevStep} onSubmit={this.onFormSubmit} />
+          <Confirmation
+            value={this.state}
+            prevStep={this.prevStep}
+            onSubmit={this.onFormSubmit}
+          />
         );
       case 5:
         return <Success />;

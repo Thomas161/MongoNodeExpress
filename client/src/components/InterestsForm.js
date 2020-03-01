@@ -21,17 +21,19 @@ class InterestsForm extends React.Component {
           </span>
         </nav>
         <label>Fave Food</label>
-        <select>
-          <option value="mexican">{value.faveFood}</option>
-          <option value="italian">{value.faveFood}</option>
-          <option value="turkish">{value.faveFood}</option>
-          <option value="chinese">{value.faveFood}</option>
-          <option value="japanese">{value.faveFood}</option>
-          <option value="american">{value.faveFood}</option>
-        </select>
+        <input
+          type="text"
+          value={value.food}
+          className={value.fieldErrors.food.length > 0 ? "error" : null}
+          name="food"
+          placeholder="foods"
+          onChange={onChange("food")}
+        />
+        {value.fieldErrors.food.length > 0 && (
+          <span className="errorMessage">{value.fieldErrors.food}</span>
+        )}
         <br />
         <label>Hobbies</label>
-
         <input
           type="text"
           value={value.hobbies}
@@ -40,6 +42,9 @@ class InterestsForm extends React.Component {
           placeholder="hobbies"
           onChange={onChange("hobbies")}
         />
+        {value.fieldErrors.hobbies.length > 0 && (
+          <span className="errorMessage">{value.fieldErrors.hobbies}</span>
+        )}
         <br />
         <button className="btn btn-dark" onClick={this.back}>
           Back

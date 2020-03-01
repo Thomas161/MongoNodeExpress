@@ -1,11 +1,8 @@
 var express = require("express");
 var cors = require("cors");
 var app = express();
-var MongoClient = require("mongodb").MongoClient;
 var assert = require("assert");
 var port = 5000;
-var url = "mongodb://127.0.0.1";
-var dbName = "my_new-DB";
 
 // app.use(express.static(path.join(__dirname, "build")));
 
