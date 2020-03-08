@@ -34,7 +34,7 @@ class PersonalForm extends React.Component {
           {value.fieldErrors.superhero.length > 0 && (
             <span className="errorMessage">{value.fieldErrors.superhero}</span>
           )}
-
+          <br />
           <label htmlFor="formGroupExampleInput">Age</label>
           <input
             className={value.fieldErrors.age.length > 0 ? "error" : null}
@@ -55,7 +55,11 @@ class PersonalForm extends React.Component {
             Back
           </button>
           <div className="divider"></div>
-          <button className="btn btn-secondary btn-lg" onClick={this.continue}>
+          <button
+            className="btn btn-secondary btn-lg"
+            onClick={this.continue}
+            disabled={!value.superhero || !value.age}
+          >
             Continue
           </button>
         </div>

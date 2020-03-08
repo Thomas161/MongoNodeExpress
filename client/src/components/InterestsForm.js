@@ -53,7 +53,11 @@ class InterestsForm extends React.Component {
             Back
           </button>
           <div className="gap"></div>
-          <button className="btn btn-success btn-lg" onClick={this.continue}>
+          <button
+            className="btn btn-success btn-lg"
+            onClick={this.continue}
+            disabled={!value.food || !value.hobbies}
+          >
             Continue
           </button>
         </div>

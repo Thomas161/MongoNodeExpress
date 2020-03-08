@@ -2,7 +2,6 @@ import React from "react";
 import { render, cleanup, fireEvent } from "@testing-library/react";
 import App from "./App";
 import Form from "./components/Form";
-import { Field } from "./components/Field";
 
 test("renders a header", () => {
   const { getByText } = render(<App />);

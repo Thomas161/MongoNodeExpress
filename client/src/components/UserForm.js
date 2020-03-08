@@ -35,6 +35,7 @@ class UserForm extends React.Component {
             type="text"
             name="lastName"
             placeholder="Last Name"
+            value={value.lastName}
             onChange={onChange("lastName")}
             noValidate
           />
@@ -49,6 +50,7 @@ class UserForm extends React.Component {
             type="email"
             name="email"
             placeholder="Email"
+            value={value.email}
             onChange={onChange("email")}
             noValidate
           />
@@ -63,6 +65,7 @@ class UserForm extends React.Component {
           className="btn btn-warning btn-lg"
           style={styles.button}
           onClick={this.continue}
+          disabled={!value.firstName || !value.lastName || !value.email}
         >
           Continue
         </button>
