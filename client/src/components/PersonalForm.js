@@ -1,5 +1,5 @@
 import React from "react";
-import "../css/personal.css";
+import styles from "../css/personal.module.css";
 
 class PersonalForm extends React.Component {
   continue = e => {
@@ -17,11 +17,11 @@ class PersonalForm extends React.Component {
       <div>
         <nav className="navbar navbar-lg bg-primary">
           <span className="navbar-brand mb-3 h1">
-            <h1 className="header">Personal Details</h1>
+            <h1 className={styles.header}>Personal Details</h1>
           </span>
         </nav>
 
-        <div className="form-collection">
+        <div className={styles.formGroup}>
           <label htmlFor="formGroupExampleInput">Fave Superhero</label>
           <input
             className={value.fieldErrors.superhero.length > 0 ? "error" : null}
@@ -32,7 +32,9 @@ class PersonalForm extends React.Component {
             noValidate
           />
           {value.fieldErrors.superhero.length > 0 && (
-            <span className="errorMessage">{value.fieldErrors.superhero}</span>
+            <span className={styles.errorMessage}>
+              {value.fieldErrors.superhero}
+            </span>
           )}
           <br />
           <label htmlFor="formGroupExampleInput">Age</label>
@@ -45,16 +47,16 @@ class PersonalForm extends React.Component {
             noValidate
           />
           {value.fieldErrors.age.length > 0 && (
-            <span className="errorMessage">{value.fieldErrors.age}</span>
+            <span className={styles.errorMessage}>{value.fieldErrors.age}</span>
           )}
         </div>
 
         <br />
-        <div className="space">
+        <div className={styles.space}>
           <button className="btn btn-danger btn-lg" onClick={this.back}>
             Back
           </button>
-          <div className="divider"></div>
+          <div className={styles.divider}></div>
           <button
             className="btn btn-secondary btn-lg"
             onClick={this.continue}

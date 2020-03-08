@@ -7,3 +7,5 @@
 ### Server side rendering (express)
 
 ### Bootstrapped
+
+:+1: npm run dev => fires up expressjs server and the react app

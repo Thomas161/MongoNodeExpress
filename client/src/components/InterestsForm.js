@@ -1,5 +1,5 @@
 import React from "react";
-import "../css/interests.css";
+import styles from "../css/interests.module.css";
 
 class InterestsForm extends React.Component {
   continue = e => {
@@ -17,10 +17,10 @@ class InterestsForm extends React.Component {
       <div>
         <nav className="navbar navbar-lg bg-primary">
           <span className="navbar-brand mb-3 h1">
-            <h1 className="int">Interests</h1>
+            <h1 className={styles.header}>Interests</h1>
           </span>
         </nav>
-        <div className="form-list">
+        <div className={styles.formGroup}>
           <label htmlFor="formGroupExampleInput">Fave Food</label>
           <input
             type="text"
@@ -31,7 +31,9 @@ class InterestsForm extends React.Component {
             onChange={onChange("food")}
           />
           {value.fieldErrors.food.length > 0 && (
-            <span className="errorMessage">{value.fieldErrors.food}</span>
+            <span className={styles.errorMessage}>
+              {value.fieldErrors.food}
+            </span>
           )}
           <br />
           <label htmlFor="formGroupExampleInput">Hobbies</label>
@@ -44,15 +46,17 @@ class InterestsForm extends React.Component {
             onChange={onChange("hobbies")}
           />
           {value.fieldErrors.hobbies.length > 0 && (
-            <span className="errorMessage">{value.fieldErrors.hobbies}</span>
+            <span className={styles.errorMessage}>
+              {value.fieldErrors.hobbies}
+            </span>
           )}
         </div>
         <br />
-        <div className="hole">
+        <div className={styles.space}>
           <button className="btn btn-dark btn-lg" onClick={this.back}>
             Back
           </button>
-          <div className="gap"></div>
+          <div className={styles.divider}></div>
           <button
             className="btn btn-success btn-lg"
             onClick={this.continue}

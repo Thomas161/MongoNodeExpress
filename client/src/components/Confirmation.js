@@ -1,5 +1,6 @@
 import React from "react";
-import "../css/confirm.css";
+import styles from "../css/confirm.module.css";
+
 class Confirmation extends React.Component {
   back = e => {
     e.preventDefault();
@@ -15,10 +16,10 @@ class Confirmation extends React.Component {
       <div>
         <nav className="navbar navbar-lg bg-primary">
           <span className="navbar-brand mb-3 h1">
-            <h1 className="halo">Confirmation</h1>
+            <h1 className={styles.header}>Confirmation</h1>
           </span>
         </nav>
-        <div className="fully">
+        <div className={styles.details}>
           <ul>
             <li>First: {value.firstName}</li>
             <hr />
@@ -37,15 +38,15 @@ class Confirmation extends React.Component {
         </div>
         <br />
         <br />
-        <div className="end">
+        <div className={styles.space}>
           <button className="btn btn-dark btn-lg" onClick={this.back}>
             Back
           </button>
-          <div className="fissure"></div>
+          <div className={styles.submit}></div>
           <button className="btn btn-primary btn-lg" onClick={onSubmit}>
             Submit
           </button>
-          <div className="mar"></div>
+          <div className={styles.continue}></div>
           <button className="btn btn-success btn-lg" onClick={this.continue}>
             Continue
           </button>
