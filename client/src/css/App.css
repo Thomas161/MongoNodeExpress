@@ -1,3 +1,82 @@
+.navbar {
+  position: fixed;
+  width: 100%;
+  height: 40vh;
+  background: slateblue;
+}
+#container {
+  position: absolute;
+  color: rgb(228, 199, 199);
+  text-transform: uppercase;
+  height: 16vh;
+  width: 50px;
+  top: 10%;
+  /* left: 50%; */
+  display: block;
+}
+
+#flip {
+  height: 25px;
+  overflow: hidden;
+}
+
+#flip > div > div {
+  color: #fff;
+  margin-bottom: 45px;
+  height: 45px;
+  display: inline-block;
+}
+
+#flip div:first-child {
+  animation: show 5s linear infinite;
+}
+
+#flip div div {
+  background: #42c58a;
+  width: 100%;
+  text-align: center;
+  /* height: 60px; */
+}
+#flip div:first-child div {
+  background: #4ec7f3;
+  width: 100%;
+  text-align: center;
+  /* height: 60px; */
+}
+#flip div:last-child div {
+  background: #dc143c;
+  width: 100%;
+  text-align: center;
+  /* height: 60px; */
+}
+
+@keyframes show {
+  0% {
+    margin-top: -270px;
+  }
+  5% {
+    margin-top: -180px;
+  }
+  33% {
+    margin-top: -180px;
+  }
+  38% {
+    margin-top: -90px;
+  }
+  66% {
+    margin-top: -90px;
+  }
+  70% {
+    margin-top: 0px;
+  }
+  99.99% {
+    margin-top: 0px;
+  }
+  100% {
+    margin-top: -270px;
+  }
+}
+
 .form-group {
   background-image: linear-gradient(
     to left,
@@ -6,46 +85,34 @@
     #f7dc6f,
     #8e44ad
   );
-  opacity: 0.75;
   position: relative;
-  width: 100%;
+  width: 215px;
   height: 250px;
-  margin-right: auto;
+  left: 50%;
+  /* margin-right: auto; */
   border-radius: 30px;
+  top: 50%;
+  transform: translate(-50%, 15%);
 }
-input[type="text"] {
+input[type="text"],
+input[type="email"],
+.btn {
   position: relative;
   left: 20px;
+  width: 70%;
+  height: 28px;
 }
-input[type="email"] {
-  position: relative;
-  left: 20px;
+.btn {
+  background: tan;
+  border: solid 3px maroon;
 }
+
 label {
   position: relative;
   left: 20px;
   color: white;
-  font-size: 1.5em;
+  font-size: 14px;
   text-shadow: #000 2px 2px 2px;
-}
-span {
-  position: relative;
-  left: 20px;
-  color: red;
-  font-size: 1em;
-  font-weight: bold;
-}
-
-h1 {
-  text-align: center;
-  width: 100%;
-  color: white;
-  font-weight: lighter;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-}
-h1:hover {
-  color: rebeccapurple;
 }
 
 input {
@@ -55,12 +122,6 @@ input {
   border-radius: 2px;
   outline: none;
   border: 2px solid #cfcfcf;
-}
-
-input::placeholder {
-  font-size: 1em;
-  font-weight: lighter;
-  color: #999;
 }
 
 input.error {

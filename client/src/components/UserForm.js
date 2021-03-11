@@ -1,19 +1,32 @@
 import React from "react";
 
 class UserForm extends React.Component {
-  continue = e => {
+  continue = (e) => {
     e.preventDefault();
     this.props.nextStep();
   };
   render() {
     const { value, onChange } = this.props;
     return (
-      <div>
-        <nav className="navbar navbar-lg bg-primary">
-          <span className="navbar-brand mb-3 h1">
-            <h1>User Form</h1>
-          </span>
-        </nav>
+      <>
+        <div className="navbar">
+          <div id="container">
+            Form
+            <div id="flip">
+              <div>
+                <div>Fill</div>
+              </div>
+              <div>
+                <div>Me</div>
+              </div>
+              <div>
+                <div>Out</div>
+              </div>
+            </div>
+            Wrapper
+          </div>
+        </div>
+
         <div className="form-group">
           <label htmlFor="formGroupExampleInput">First Name</label>
           <input
@@ -28,7 +41,7 @@ class UserForm extends React.Component {
           {value.fieldErrors.firstName.length > 0 && (
             <span className="errorMessage">{value.fieldErrors.firstName}</span>
           )}
-          <br />
+
           <label htmlFor="formGroupExampleInput">Last Name</label>
           <input
             className={value.fieldErrors.lastName.length > 0 ? "error" : null}
@@ -43,7 +56,7 @@ class UserForm extends React.Component {
           {value.fieldErrors.lastName.length > 0 && (
             <span className="errorMessage">{value.fieldErrors.lastName}</span>
           )}
-          <br />
+
           <label htmlFor="formGroupExampleInput">Email</label>
           <input
             className={value.fieldErrors.email.length > 0 ? "error" : null}
@@ -58,26 +71,18 @@ class UserForm extends React.Component {
           {value.fieldErrors.email.length > 0 && (
             <span className="errorMessage">{value.fieldErrors.email}</span>
           )}
-          <br />
-        </div>
 
-        <button
-          className="btn btn-warning btn-lg"
-          style={styles.button}
-          onClick={this.continue}
-          disabled={!value.firstName || !value.lastName || !value.email}
-        >
-          Continue
-        </button>
-      </div>
+          <button
+            className="btn"
+            onClick={this.continue}
+            disabled={!value.firstName || !value.lastName || !value.email}
+          >
+            Continue
+          </button>
+        </div>
+      </>
     );
   }
 }
 
 export default UserForm;
-
-const styles = {
-  button: {
-    margin: 15
-  }
-};
