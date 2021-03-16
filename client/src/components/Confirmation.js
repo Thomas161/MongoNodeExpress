@@ -2,56 +2,84 @@ import React from "react";
 import styles from "../css/confirm.module.css";
 
 class Confirmation extends React.Component {
-  back = e => {
+  back = (e) => {
     e.preventDefault();
     this.props.prevStep();
   };
-  continue = e => {
+  continue = (e) => {
     e.preventDefault();
     this.props.nextStep();
   };
   render() {
     const { onSubmit, value } = this.props;
     return (
-      <div>
-        <nav className="navbar navbar-lg bg-primary">
-          <span className="navbar-brand mb-3 h1">
-            <h1 className={styles.header}>Confirmation</h1>
-          </span>
+      <>
+        <nav className="navbar">
+          <div id="container">
+            Form
+            <div id="flip">
+              <div>
+                <div>Fill</div>
+              </div>
+              <div>
+                <div>Me</div>
+              </div>
+              <div>
+                <div>Out</div>
+              </div>
+            </div>
+            Wrapper
+          </div>
         </nav>
         <div className={styles.details}>
           <ul>
-            <li>First: {value.firstName}</li>
+            <li>
+              <p>First:</p> {value.firstName}
+            </li>
             <hr />
-            <li>Last: {value.lastName}</li>
+            <li>
+              <p>Last:</p> {value.lastName}
+            </li>
             <hr />
-            <li>Email: {value.email}</li>
+            <li>
+              <p>Email:</p> {value.email}
+            </li>
             <hr />
-            <li>Age: {value.age}</li>
+            <li>
+              <p>Age:</p> {value.age}
+            </li>
             <hr />
-            <li>Superhero: {value.superhero}</li>
+            <li>
+              <p>Superhero:</p> {value.superhero}
+            </li>
             <hr />
-            <li>Fave Foods: {value.food}</li>
+            <li>
+              <p>Fave Foods:</p> {value.food}
+            </li>
             <hr />
-            <li>Hobbies: {value.hobbies}</li>
+            <li>
+              <p>Hobbies:</p> {value.hobbies}
+            </li>
           </ul>
         </div>
         <br />
         <br />
+        <br />
+        <br />
         <div className={styles.space}>
-          <button className="btn btn-dark btn-lg" onClick={this.back}>
+          <button className="btn btn-dark btn-md" onClick={this.back}>
             Back
           </button>
-          <div className={styles.submit}></div>
-          <button className="btn btn-primary btn-lg" onClick={onSubmit}>
+          &nbsp;&nbsp;&nbsp;
+          <button className="btn btn-primary btn-md" onClick={onSubmit}>
             Submit
           </button>
-          <div className={styles.continue}></div>
-          <button className="btn btn-success btn-lg" onClick={this.continue}>
+          &nbsp;&nbsp;&nbsp;
+          <button className="btn btn-success btn-md" onClick={this.continue}>
             Continue
           </button>
         </div>
-      </div>
+      </>
     );
   }
 }

@@ -1,21 +1,25 @@
-.formGroup {
-  background-image: linear-gradient(
-    to left,
-    #c170c1,
-    #46504e,
-    #6ff7be,
-    #27d4da
-  );
-  opacity: 0.75;
-  position: relative;
-  width: 100%;
-  height: 165px;
-  margin-right: auto;
-  border-radius: 30px;
+.form-group,
+.dateAndTime {
+  min-height: 100vh;
+  position: fixed;
+  width: 50%;
+  top: 25%;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+.form-group {
+  left: 0;
+  background: gold;
+}
+.dateAndTime {
+  right: 0;
+  background: maroon;
 }
 input[type="text"] {
   position: relative;
   left: 20px;
+  width: 55%;
+  height: 24px;
 }
 
 label {
@@ -35,17 +39,6 @@ span {
 .space {
   left: 200px;
   margin-left: 20px;
-}
-
-.header {
-  text-align: center;
-  width: 100%;
-  color: white;
-  font-weight: bolder;
-  font-family: Roboto;
-}
-.header:hover {
-  color: rgb(240, 118, 47);
 }
 
 input {
@@ -76,4 +69,14 @@ input.error {
   color: red;
   font-size: 1.2em;
   display: relative;
+}
+
+.continueButtonPersonal {
+  background: #c170c1;
+  color: #fff;
+}
+.backButtonPersonal {
+  background: dodgerblue;
+
+  color: #fff;
 }

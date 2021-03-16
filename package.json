@@ -22,6 +22,7 @@
     "jsonwebtoken": "^8.5.1",
     "lodash": "^4.17.13",
     "mongodb": "^3.5.2",
-    "mongoose": "^5.7.12"
+    "mongoose": "^5.7.12",
+    "prop-types": "^15.7.2"
   }
 }

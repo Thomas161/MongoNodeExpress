@@ -1,22 +1,32 @@
-.formGroup {
-  background-image: linear-gradient(to right, #0885d8, #f5f5f5, #f91212);
-  opacity: 0.75;
-  position: relative;
-  width: 100%;
-  height: 180px;
-  margin-right: auto;
-  border-radius: 30px;
+.form-group,
+.dateAndTime {
+  min-height: 100vh;
+  position: fixed;
+  width: 50%;
+  top: 25%;
+  overflow-x: hidden;
+  min-height: 100vh;
 }
+.form-group {
+  left: 0;
+  background: gold;
+}
+.dateAndTime {
+  right: 0;
+  background: maroon;
+}
+
 input[type="text"] {
   position: relative;
   left: 20px;
+  width: 55%;
+  height: 24px;
 }
-
 label {
   position: relative;
   left: 20px;
   color: white;
-  font-size: 1.5em;
+  font-size: 1.3em;
   text-shadow: #000 2px 2px 2px;
 }
 span {
@@ -62,12 +72,13 @@ input.error {
   font-size: 1.2em;
   display: relative;
 }
-.space {
-  left: 200px;
-  margin-left: 20px;
+
+.continueButtonOne {
+  background: #c170c1;
+  color: #fff;
 }
-.divider {
-  width: 5px;
-  height: auto;
-  display: inline-block;
+.backButtonOne {
+  background: dodgerblue;
+
+  color: #fff;
 }

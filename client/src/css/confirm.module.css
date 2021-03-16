@@ -1,23 +1,26 @@
 .details {
   background-color: rgba(96, 93, 93, 0.726);
-  width: 300px;
-  margin-left: 20px;
-  border: rgb(233, 62, 190) dotted 3px;
+  width: 230px;
+  height: 330px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 30%;
+
+  margin: 10px;
 }
 ul {
+  overflow-y: scroll;
+  margin-top: 8px;
   list-style-type: none;
   color: azure;
   text-align: left;
-  width: 20em;
+  width: 100%;
+  height: 320px;
+  font-size: 9px;
 }
 
-label {
-  position: relative;
-  left: 20px;
-  color: white;
-  font-size: 1.5em;
-  text-shadow: #000 2px 2px 2px;
-}
 span {
   position: relative;
   left: 20px;
@@ -38,16 +41,12 @@ span {
 }
 
 .space {
-  left: 200px;
-  margin-left: 20px;
+  position: relative;
+  left: 40%;
+  top: 10%;
 }
-.submit {
-  width: 10px;
-  height: auto;
-  display: inline-block;
-}
-.continue {
-  width: 10px;
-  height: auto;
-  display: inline-block;
+
+p {
+  font-size: 12px;
+  color: firebrick;
 }

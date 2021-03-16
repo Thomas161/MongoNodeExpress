@@ -2,25 +2,37 @@ import React from "react";
 import styles from "../css/interests.module.css";
 
 class InterestsForm extends React.Component {
-  continue = e => {
+  continue = (e) => {
     e.preventDefault();
     this.props.nextStep();
   };
 
-  back = e => {
+  back = (e) => {
     e.preventDefault();
     this.props.prevStep();
   };
   render() {
-    const { value, onChange } = this.props;
+    const { value, onChange, time } = this.props;
     return (
-      <div>
-        <nav className="navbar navbar-lg bg-primary">
-          <span className="navbar-brand mb-3 h1">
-            <h1 className={styles.header}>Interests</h1>
-          </span>
+      <>
+        <nav className="navbar">
+          <div id="container">
+            Form
+            <div id="flip">
+              <div>
+                <div>Fill</div>
+              </div>
+              <div>
+                <div>Me</div>
+              </div>
+              <div>
+                <div>Out</div>
+              </div>
+            </div>
+            Wrapper
+          </div>
         </nav>
-        <div className={styles.formGroup}>
+        <div className="form-group">
           <label htmlFor="formGroupExampleInput">Fave Food</label>
           <input
             type="text"
@@ -35,7 +47,6 @@ class InterestsForm extends React.Component {
               {value.fieldErrors.food}
             </span>
           )}
-          <br />
           <label htmlFor="formGroupExampleInput">Hobbies</label>
           <input
             type="text"
@@ -50,37 +61,27 @@ class InterestsForm extends React.Component {
               {value.fieldErrors.hobbies}
             </span>
           )}
-        </div>
-        <br />
-        <div className={styles.space}>
-          <button className="btn btn-dark btn-lg" onClick={this.back}>
+          <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <button className="backButtonOne" onClick={this.back}>
             Back
           </button>
-          <div className={styles.divider}></div>
+          {/* <div className="divider"></div> */}
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           <button
-            className="btn btn-success btn-lg"
+            className="continueButtonOne"
             onClick={this.continue}
             disabled={!value.food || !value.hobbies}
           >
             Continue
           </button>
         </div>
-      </div>
+        <div className="dateAndTime">
+          <span id="clock">{time}</span>
+        </div>
+      </>
     );
   }
 }
 
-// const styles = {
-//   button: {
-//     margin: 15
-//   }
-// };
 export default InterestsForm;
-
-// import { MuiThemeProvider } from "@material-ui/core/styles";
-// import AppBar from "@material-ui/core/AppBar";
-// import Select from "@material-ui/core/Select";
-// import InputLabel from "@material-ui/core/InputLabel";
-// import Button from "@material-ui/core/Button";
-// import MenuItem from "@material-ui/core/MenuItem";
-// import FormControlLabel from "material-ui/FormControlLabel";

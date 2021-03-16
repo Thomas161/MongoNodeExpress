@@ -6,7 +6,7 @@ class UserForm extends React.Component {
     this.props.nextStep();
   };
   render() {
-    const { value, onChange } = this.props;
+    const { value, onChange, time } = this.props;
     return (
       <>
         <div className="navbar">
@@ -71,14 +71,17 @@ class UserForm extends React.Component {
           {value.fieldErrors.email.length > 0 && (
             <span className="errorMessage">{value.fieldErrors.email}</span>
           )}
-
+          <br />
           <button
-            className="btn"
+            className="continueButton"
             onClick={this.continue}
             disabled={!value.firstName || !value.lastName || !value.email}
           >
             Continue
           </button>
+        </div>
+        <div className="dateAndTime">
+          <span id="clock">{time}</span>
         </div>
       </>
     );

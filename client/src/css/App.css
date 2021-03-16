@@ -1,7 +1,7 @@
 .navbar {
   position: fixed;
   width: 100%;
-  height: 40vh;
+  height: 30vh;
   background: slateblue;
 }
 #container {
@@ -41,13 +41,11 @@
   background: #4ec7f3;
   width: 100%;
   text-align: center;
-  /* height: 60px; */
 }
 #flip div:last-child div {
   background: #dc143c;
   width: 100%;
   text-align: center;
-  /* height: 60px; */
 }
 
 @keyframes show {
@@ -77,34 +75,43 @@
   }
 }
 
+.form-group,
+.dateAndTime {
+  min-height: 100vh;
+  position: fixed;
+  width: 50%;
+  top: 25%;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
 .form-group {
-  background-image: linear-gradient(
-    to left,
-    #2980b9,
-    #45b39d,
-    #f7dc6f,
-    #8e44ad
-  );
-  position: relative;
-  width: 215px;
-  height: 250px;
-  left: 50%;
-  /* margin-right: auto; */
-  border-radius: 30px;
-  top: 50%;
-  transform: translate(-50%, 15%);
+  left: 0;
+  background: green;
+}
+.dateAndTime {
+  right: 0;
+  background: salmon;
 }
 input[type="text"],
-input[type="email"],
-.btn {
+input[type="email"] {
   position: relative;
   left: 20px;
-  width: 70%;
-  height: 28px;
+  width: 55%;
+  height: 24px;
 }
-.btn {
-  background: tan;
-  border: solid 3px maroon;
+.continueButton {
+  position: relative;
+  background: #d35400;
+  color: white;
+  left: 5%;
+  /* bottom: 8%; */
+}
+#clock {
+  position: absolute;
+  left: 50%;
+  top: 35%;
+  transform: translate(-50%, -50%);
+  color: #fff;
 }
 
 label {

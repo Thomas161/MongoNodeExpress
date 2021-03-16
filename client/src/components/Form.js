@@ -16,15 +16,16 @@ const validateFields = (fieldErrors, ...rest) => {
   //iterate over all fieldErrors object, if length is greater than 0,
   //we have an error, boolean valid becomes false, invalid
   //else it's valid(true)
-  Object.values(fieldErrors).forEach(val => {
+  Object.values(fieldErrors).forEach((val) => {
     val.length > 0 && (valid = false);
   });
   //ensure form is filled out
-  Object.values(rest).forEach(val => {
+  Object.values(rest).forEach((val) => {
     val === null && (valid = false);
   });
   return valid;
 };
+
 class Form extends Component {
   state = {
     step: 1,
@@ -35,6 +36,7 @@ class Form extends Component {
     age: "",
     hobbies: "",
     food: "",
+    time: new Date().toLocaleTimeString(),
     fieldErrors: {
       firstName: "",
       lastName: "",
@@ -42,8 +44,8 @@ class Form extends Component {
       superhero: "",
       age: "",
       hobbies: "",
-      food: ""
-    }
+      food: "",
+    },
   };
 
   // nextStep(){}
@@ -58,7 +60,7 @@ class Form extends Component {
     this.setState({ step: step - 1 });
   };
 
-  handleOtherInput = input => e => {
+  handleOtherInput = (input) => (e) => {
     e.preventDefault();
     const { name, value } = e.target;
     let formErrors = this.state.fieldErrors;
@@ -89,11 +91,11 @@ class Form extends Component {
     }
     this.setState({
       formErrors,
-      [input]: e.target.value
+      [input]: e.target.value,
     });
   };
 
-  onFormSubmit = e => {
+  onFormSubmit = (e) => {
     e.preventDefault();
     const {
       firstName,
@@ -102,7 +104,7 @@ class Form extends Component {
       superhero,
       age,
       food,
-      hobbies
+      hobbies,
     } = this.state;
     if (validateFields(this.state.fieldErrors)) {
       console.log(
@@ -152,7 +154,7 @@ class Form extends Component {
         superhero,
         age,
         food,
-        hobbies
+        hobbies,
       };
 
       API.post("/contacts", combineDetails)
@@ -169,15 +171,15 @@ class Form extends Component {
               `
           )
         )
-        .catch(err => console.log(`Error, ${err}`));
+        .catch((err) => console.log(`Error, ${err}`));
 
       localStorage.setItem("firstName", firstName);
       localStorage.setItem("lastName", lastName);
       localStorage.setItem("email", email);
       localStorage.setItem("superhero", superhero);
-      localStorage.setItem("superhero", age);
-      localStorage.setItem("superhero", food);
-      localStorage.setItem("superhero", hobbies);
+      localStorage.setItem("age", age);
+      localStorage.setItem("food", food);
+      localStorage.setItem("hobbies", hobbies);
       //add sex,age,hobbies,fave foods etc
       let defaultState = {
         firstName,
@@ -186,7 +188,7 @@ class Form extends Component {
         age,
         hobbies,
         food,
-        superhero
+        superhero,
       };
       this.setState({ defaultState });
       this.props.history.push("/");
@@ -199,21 +201,25 @@ class Form extends Component {
     const storage = localStorage.getItem("firstName") === "true";
     const userSaved = storage ? localStorage.getItem("firstName") : null;
     this.setState({ userSaved, storage });
-    /**OPTIONAL */
-    //  const storage1 = localStorage.getItem("lastName") === "true";
-    //  const storage2 = localStorage.getItem("email") === "true";
-    //  const storage3 = localStorage.getItem("age") === "true";
-    //  const storage4 = localStorage.getItem("superhero") === "true";
-    //  const storage5 = localStorage.getItem("food") === "true";
-    //  const storage6 = localStorage.getItem("hobbies") === "true";
+    this.intervalID = setInterval(() => this.updateClock(), 1000);
   }
 
   componentDidUpdate() {
-    console.log(this.state);
+    // console.log(this.state);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.intervalID);
+  }
+
+  updateClock() {
+    this.setState({
+      time: new Date().toLocaleTimeString(),
+    });
   }
 
   render() {
-    const { step } = this.state;
+    const { step, time } = this.state;
     switch (step) {
       case 1:
         return (
@@ -221,6 +227,7 @@ class Form extends Component {
             value={this.state}
             onChange={this.handleOtherInput}
             nextStep={this.nextStep}
+            time={time}
           />
         );
       case 2:
@@ -230,6 +237,7 @@ class Form extends Component {
             onChange={this.handleOtherInput}
             nextStep={this.nextStep}
             prevStep={this.prevStep}
+            time={time}
           />
         );
       case 3:
@@ -239,6 +247,7 @@ class Form extends Component {
             onChange={this.handleOtherInput}
             nextStep={this.nextStep}
             prevStep={this.prevStep}
+            time={time}
           />
         );
       case 4:
@@ -248,6 +257,7 @@ class Form extends Component {
             prevStep={this.prevStep}
             onSubmit={this.onFormSubmit}
             nextStep={this.nextStep}
+            time={time}
           />
         );
       case 5:

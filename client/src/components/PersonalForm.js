@@ -2,26 +2,38 @@ import React from "react";
 import styles from "../css/personal.module.css";
 
 class PersonalForm extends React.Component {
-  continue = e => {
+  continue = (e) => {
     e.preventDefault();
     this.props.nextStep();
   };
 
-  back = e => {
+  back = (e) => {
     e.preventDefault();
     this.props.prevStep();
   };
   render() {
-    const { value, onChange } = this.props;
+    const { value, onChange, time } = this.props;
     return (
-      <div>
-        <nav className="navbar navbar-lg bg-primary">
-          <span className="navbar-brand mb-3 h1">
-            <h1 className={styles.header}>Personal Details</h1>
-          </span>
+      <>
+        <nav className="navbar">
+          <div id="container">
+            Form
+            <div id="flip">
+              <div>
+                <div>Fill</div>
+              </div>
+              <div>
+                <div>Me</div>
+              </div>
+              <div>
+                <div>Out</div>
+              </div>
+            </div>
+            Wrapper
+          </div>
         </nav>
 
-        <div className={styles.formGroup}>
+        <div className="form-group">
           <label htmlFor="formGroupExampleInput">Fave Superhero</label>
           <input
             className={value.fieldErrors.superhero.length > 0 ? "error" : null}
@@ -49,23 +61,25 @@ class PersonalForm extends React.Component {
           {value.fieldErrors.age.length > 0 && (
             <span className={styles.errorMessage}>{value.fieldErrors.age}</span>
           )}
+          <br />
+          <div className={styles.space}>
+            <button className="backButtonPersonal" onClick={this.back}>
+              Back
+            </button>
+            <div className={styles.divider}></div>
+            <button
+              className="continueButtonPersonal"
+              onClick={this.continue}
+              disabled={!value.superhero || !value.age}
+            >
+              Continue
+            </button>
+          </div>
         </div>
-
-        <br />
-        <div className={styles.space}>
-          <button className="btn btn-danger btn-lg" onClick={this.back}>
-            Back
-          </button>
-          <div className={styles.divider}></div>
-          <button
-            className="btn btn-secondary btn-lg"
-            onClick={this.continue}
-            disabled={!value.superhero || !value.age}
-          >
-            Continue
-          </button>
+        <div className="dateAndTime">
+          <span id="clock">{time}</span>
         </div>
-      </div>
+      </>
     );
   }
 }
