@@ -13,8 +13,8 @@ A series of form widgets that are collated and submitted to a NodeJs/Express ser
 
 ### Scripts
 
-`:+1: npm run dev` => run client and express server concurrently
+:+1:`npm run dev` => run client and express server concurrently
 <br/>
-`:+1: npm run client` => run client in isolation
+:+1:`npm run client` => run client in isolation
 <br/>
-`:+1: npm run server` => run express server in isolation
+:+1:`npm run server` => run express server in isolation
