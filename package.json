@@ -18,11 +18,13 @@
   "dependencies": {
     "concurrently": "^5.1.0",
     "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
     "express-session": "^1.16.2",
     "jsonwebtoken": "^8.5.1",
     "lodash": "^4.17.13",
     "mongodb": "^3.5.2",
     "mongoose": "^5.7.12",
+    "mysql": "^2.18.1",
     "prop-types": "^15.7.2"
   }
 }
