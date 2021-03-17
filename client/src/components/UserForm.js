@@ -41,7 +41,7 @@ class UserForm extends React.Component {
           {value.fieldErrors.firstName.length > 0 && (
             <span className="errorMessage">{value.fieldErrors.firstName}</span>
           )}
-
+          <br />
           <label htmlFor="formGroupExampleInput">Last Name</label>
           <input
             className={value.fieldErrors.lastName.length > 0 ? "error" : null}
@@ -56,7 +56,7 @@ class UserForm extends React.Component {
           {value.fieldErrors.lastName.length > 0 && (
             <span className="errorMessage">{value.fieldErrors.lastName}</span>
           )}
-
+          <br />
           <label htmlFor="formGroupExampleInput">Email</label>
           <input
             className={value.fieldErrors.email.length > 0 ? "error" : null}

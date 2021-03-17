@@ -24,7 +24,14 @@ app.use(
 
 app.set("json spaces", 4);
 
-/**Inert back each time db connection inside .env */
+/**Connection to MYSQL and precise table we would be using */
+
+let db = mysql.createConnection({
+  host: "*********",
+  user: "***********",
+  password: "**********",
+  database: "*************",
+});
 
 db.connect((err) => {
   if (err) {
@@ -35,14 +42,18 @@ db.connect((err) => {
   }
 });
 
+/**Test route */
 app.get("/", (req, res) => {
   res.send({ express: "Aloha from express" });
 });
 
 var newPeople = [];
+
+/**View all data from ReactJs(Client) and view on backend (Node) */
 app.get("/backend", (req, res) => {
   try {
     console.log("Backend");
+
     res.writeHead(200, { "Content-Type": "application/json" });
     console.log("New People Registered => ", JSON.stringify(newPeople));
     res.end(JSON.stringify(newPeople));
@@ -51,6 +62,7 @@ app.get("/backend", (req, res) => {
   }
 });
 
+/**Endpoint that takes all data from body of client and appends it to server and MySQL table */
 app.post("/contacts", (req, res) => {
   //Saving to Node server
   const rego = {
@@ -64,34 +76,33 @@ app.post("/contacts", (req, res) => {
   };
   newPeople.push(rego);
   console.log(newPeople);
-  const sql = `INSERT INTO people (first,last,email,hero,age,food,hobbies) VALUES (?)`;
   const post = rego;
-  console.log("Inserted into table", post);
-  db.query(sql, post, (err, result) => {
+  db.query("INSERT INTO people SET ?", post, (err, result) => {
     if (err) {
       console.log("error", err.stack);
     } else {
-      console.log("INSERTED INTO MYSQL DB/TABLE ", result.affectedRows);
-      console.log(sql);
+      console.log("INSERTED INTO MYSQL DB/TABLE ", result.affectedRows); //1
+      // console.log(sql);
     }
   });
+
   res.send({ express: newPeople });
 });
 
-//select all people
+/**select all people table*/
 app.get("/people/list", (req, res) => {
   const sql = "SELECT * FROM people";
   db.query(sql, (err, result) => {
     if (err) {
       throw err;
     } else {
-      console.log("Result added to people table ", sql);
+      console.log("People in table ", JSON.stringify(result));
       res.send(result);
     }
   });
 });
 
-//get a specific id from url param
+/**get a specific id from url param*/
 app.get("/people/list/:id", (req, res) => {
   const sql = `SELECT * FROM people WHERE id = ${req.params.id}`;
   db.query(sql, (err, result) => {
@@ -100,15 +111,28 @@ app.get("/people/list/:id", (req, res) => {
   });
 });
 
-// const rego = {
-//   fNAME: req.body.firstName,
-//   lNAME: req.body.lastName,
-//   eMAIL: req.body.email,
-//   fOOD: req.body.food,
-//   aGE: req.body.age,
-//   hOBBIES: req.body.hobbies,
-//   sUPERHERO: req.body.superhero,
-// };
-// const sql = `INSERT INTO people () VALUES (${rego})`
+/**Update record with specific id param */
+app.get("/people/update/:id", (req, res) => {
+  const sql = `UPDATE people SET hero =? WHERE id = ${req.params.id}`;
+  db.query(sql, ["Batman"], (err, result) => {
+    if (err) {
+      console.log("Error", err.stack);
+    } else {
+      console.log(result.affectedRows);
+    }
+  });
+});
+
+/**Delete record with specific id at this endpoint */
+app.get("/people/delete/:id", (req, res) => {
+  const sql = `DELETE FROM people WHERE id = ${req.params.id}`;
+  db.query(sql, (err, result) => {
+    if (err) {
+      console.log("Error", err.stack);
+    } else {
+      console.log(result.affectedRows);
+    }
+  });
+});
 
 app.listen(port, () => console.log("Listening on 5000"));

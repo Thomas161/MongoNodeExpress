@@ -112,6 +112,12 @@ input[type="email"] {
   top: 35%;
   transform: translate(-50%, -50%);
   color: #fff;
+  font-size: 60px;
+  background-image: url(https://media.giphy.com/media/26BROrSHlmyzzHf3i/giphy.gif);
+  background-size: cover;
+  color: transparent;
+  -moz-background-clip: text;
+  -webkit-background-clip: text;
 }
 
 label {
@@ -132,11 +138,11 @@ input {
 }
 
 input.error {
-  border: 2.5px solid red;
+  border: 2px solid red;
 }
 
 .errorMessage {
   color: red;
-  font-size: 1.2em;
+  font-size: 9px;
   display: relative;
 }

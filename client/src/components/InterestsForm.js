@@ -47,6 +47,7 @@ class InterestsForm extends React.Component {
               {value.fieldErrors.food}
             </span>
           )}
+          <br />
           <label htmlFor="formGroupExampleInput">Hobbies</label>
           <input
             type="text"
